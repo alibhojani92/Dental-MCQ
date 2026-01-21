@@ -53,27 +53,30 @@ export default {
 
         // /start command
         if (text === '/start') {
-          await sendMessage(
-            env,
-            chatId,
+        if (text === '/start') {
+
+  // 1️⃣ FIRST: remove old reply keyboard
+  await sendMessage(env, chatId, 'Keyboard reset ✅', {
+    remove_keyboard: true
+  });
+
+  // 2️⃣ SECOND: send inline keyboard
+  await sendMessage(
+    env,
+    chatId,
 `👋 Welcome to Smart MCQ Test Bot
 
 Choose an option 👇`,
-            {
-              inline_keyboard: [
-                [{ text: '📝 Daily Test', callback_data: 'DAILY' }],
-                [{ text: '📅 Weekly Test', callback_data: 'WEEKLY' }],
-                [{ text: '📊 My Progress', callback_data: 'PROGRESS' }]
-              ]
-            }
-          );
+    {
+      inline_keyboard: [
+        [{ text: '📝 Daily Test', callback_data: 'DAILY' }],
+        [{ text: '📅 Weekly Test', callback_data: 'WEEKLY' }],
+        [{ text: '📊 My Progress', callback_data: 'PROGRESS' }]
+      ]
+    }
+  );
 
-          // IMPORTANT: remove any old reply keyboard (one-time fix)
-          await sendMessage(env, chatId, 'Keyboard synced ✅', {
-            remove_keyboard: true
-          });
-
-          return new Response('ok');
+  return new Response('ok');
         }
 
         // Admin commands
