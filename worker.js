@@ -91,7 +91,7 @@ Choose an option 👇`,
       }
 
       return new Response('ok');
-    } catch (err) {
+     catch (err) {
       console.error('Worker error:', err);
       return new Response('error', { status: 500 });
     }
