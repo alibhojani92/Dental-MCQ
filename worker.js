@@ -90,8 +90,8 @@ Choose an option 👇`,
         return new Response('ok');
       }
 
-      return new Response('ok');
-     catch (err) {
+      return new Response('ok')
+        
       console.error('Worker error:', err);
       return new Response('error', { status: 500 });
     }
