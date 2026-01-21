@@ -53,6 +53,19 @@ Choose an option 👇`,
          CALLBACK HANDLER
       ====================== */
       if (update.callback_query) {
+  const cb = update.callback_query;
+
+  await answerCallback(env, cb.id);
+
+  await sendMessage(
+    env,
+    cb.message.chat.id,
+    `Callback received: ${cb.data}`
+  );
+
+  return new Response('ok');
+      }
+      if (update.callback_query) {
         const cb = update.callback_query;
         const data = cb.data;
         const chatId = cb.message.chat.id;
